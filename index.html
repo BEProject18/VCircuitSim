@@ -8,25 +8,49 @@
     <script src="http://use.edgefonts.net/advent-pro:n2,n5,n7,n4,n1,n6,n3:all.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
 <script>
+
+    var i;var num;var count=0;var res = "";
 if (annyang) {
   // Let's define our first command. First the text we expect, and then the function it should call
   var commands = {
-    'hello' : function(){alert('hello world!');}
-  };
+    'hello' : function(){}
+      
+  }};
+    annyang.addCallback('result', function(userSaid, commandText, phrases) {
+        for(i = 0;i < 5; i++)
+            { //res = Number.isNaN(userSaid[i]);
+              if(count==0){
+                  num = userSaid[i].replace(/^\D+|\D+$/g, "");
+                  //if(res == "false"){
+                     
+                 
+                  console.log(num)
+                  count=count+1;
+                  document.getElementById("t").innerHTML = num;
+             
+              }
+                if(count>0)
+                {
+                    count = 0;
+                    break;
+                }
+                
+                  
+              
+                
+                 
+            }});
+   
 
   // Add our commands to annyang
   annyang.addCommands(commands);
+    annyang.debug();
 
   // Start listening. You can call this here, or attach this call to an event, button, etc.
   annyang.start();
     
-}
 </script>
-    <script src="FileSaver.js"></script>
-<script type="text/javascript">
-    var blob = new Blob(["Hello, world!"], {type: "text/plain;charset=utf-8"});
-    saveAs(blob, "hello world.txt");
-</script>
+   
     <title>
         VCircuitSim
     </title>
@@ -38,7 +62,10 @@ if (annyang) {
             VCircuitSim
         </h1>
     </div>
-    <div class="w3-circle">
+    <div id=t>
+       <p>
+           
+       </p>
         
     </div>
 
