@@ -22,6 +22,11 @@ if (annyang) {
     
 }
 </script>
+    <script src="FileSaver.js"></script>
+<script type="text/javascript">
+    var blob = new Blob(["Hello, world!"], {type: "text/plain;charset=utf-8"});
+    saveAs(blob, "hello world.txt");
+</script>
     <title>
         VCircuitSim
     </title>
