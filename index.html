@@ -9,24 +9,25 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
 <script>
 
-    var i;var num;var count=0;var res = "";
+    var i;var num;var count=0;var res = "";var R1; var R2;
+    var Volts;
 if (annyang) {
   // Let's define our first command. First the text we expect, and then the function it should call
   var commands = {
     'hello' : function(){}
       
   }};
-    annyang.addCallback('result', function(userSaid, commandText, phrases) {
+    annyang.addCallback('result', function(userSaid) {
         for(i = 0;i < 5; i++)
             { //res = Number.isNaN(userSaid[i]);
               if(count==0){
-                  num = userSaid[i].replace(/^\D+|\D+$/g, "");
+                  R1 = userSaid[i].replace(/^\D+|\D+$/g, "");
                   //if(res == "false"){
                      
                  
-                  console.log(num)
+                  console.log(R1)
                   count=count+1;
-                  document.getElementById("t").innerHTML = num;
+                  document.getElementById("r1").innerHTML = R1;
              
               }
                 if(count>0)
@@ -39,7 +40,32 @@ if (annyang) {
               
                 
                  
-            }});
+            }}); //check here
+   
+    annyang.addCallback('result', function(userSaid) {
+        for(i = 0;i < 5; i++)
+            { //res = Number.isNaN(userSaid[i]);
+              if(count==0){
+                  R2 = userSaid[i].replace(/^\D+|\D+$/g, "");
+                  //if(res == "false"){
+                     
+                 
+                  console.log(R1)
+                  count=count+1;
+                  document.getElementById("r2").innerHTML = R2;
+             
+              }
+                if(count>0)
+                {
+                    count = 0;
+                    break;
+                }
+                
+                  
+              
+                
+                 
+            }});  // and here
    
 
   // Add our commands to annyang
@@ -62,12 +88,29 @@ if (annyang) {
             VCircuitSim
         </h1>
     </div>
-    <div id=t>
+    <div>
        <p>
-           
+          Enter R1 =
        </p>
         
     </div>
+    <div id=r1>
+        <p>
+            
+        </p>
+    </div>
+    <div>
+       <p>
+          Enter R2 =
+       </p>
+        
+    </div>
+    <div id=r2>
+        <p>
+            
+        </p>
+    </div>
+    
 
 
 </body>
