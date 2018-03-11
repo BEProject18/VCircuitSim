@@ -66,6 +66,18 @@ if (annyang) {
                 
                  
             }});  // and here
+    var file;
+var data = [];
+data.push("To create a Vcircuit\n");
+var properties = {type: 'text/plain'};
+try {
+  file = new File(data, "Vsim.txt", properties);
+} catch (e) {
+  file = new Blob(data, properties);
+}
+var url = URL.createObjectURL(file);
+document.getElementById('link').href = url;
+<a id="link" target="_blank" download="Vcircuit.txt">Download</a>
    
 
   // Add our commands to annyang
