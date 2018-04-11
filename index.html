@@ -1,68 +1,134 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US-x-Hixie">
+<!Doctype html>
+<html>
 
-  <head xmlns="http://www.w3.org/1999/xhtml">
-    <meta charset="utf-8" />
-    <title>FileSaver.js demo</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/eligrey/FileSaver.js/c3e4a45021f205a790a2699f4af7a5b85fb63e09/demo/demo.css" />
-</head>
-   <body xmlns="http://www.w3.org/1999/xhtml">
-    <h1><a href="https://github.com/eligrey/FileSaver.js">FileSaver.js</a> demo</h1>
-    <p>
-        The following examples demonstrate how it is possible to generate and save any type of data right in the browser using the W3C <code>saveAs()</code> FileSaver interface, without contacting any servers.
-    </p>
-   <section xmlns="http://www.w3.org/1999/xhtml" id="image-demo">
-        <h2>Saving an image</h2>
-        <canvas class="input" id="canvas" width="500" height="300"></canvas>
-        <form id="canvas-options">
-            <label>Filename: <input class="filename" id="canvas-filename" placeholder="doodle" type="text" />.png</label>
-            <input value="Save" type="submit" />
-            <input id="canvas-clear" value="Clear" type="button" />
-        </form>
-    </section>
-    <section xmlns="http://www.w3.org/1999/xhtml" id="text-demo">
-        <h2>Saving text</h2>
-        <textarea class="input" id="text" placeholder="Once upon a time..."></textarea>
-        <form id="text-options">
-            <label>Filename: <input class="filename" id="text-filename" placeholder="a plain document" type="text" />.txt</label>
-            <input value="Save" type="submit" />
-        </form>
-    </section>
-    <section id="html-demo">
-        <h2>Saving rich text</h2>
-       
-        <pre class="input" id="html" contenteditable="">
-    ( { EESchema Netlist Version 1.1}
- <h7 id=r1data>( /56B86791 $noname  R1 </h7><h7>k</h7>
-  (    1 in )
-  (    2 out )
- )
- ( /56B8686C $noname  C1 10u
-  (    1 out )
-  (    2 GND )
- )
- ( /56B868AD R1  v1 pwl
-  (    1 in )
-  (    2 GND )
- )
- ( /56D46C33 $noname  U1 plot_v1
-  (    ~ in )
- )
- ( /56D46CCE $noname  U2 plot_v1
-  (    ~ out )
- )
-)
-*
-</pre>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="http://use.edgefonts.net/advent-pro:n2,n5,n7,n4,n1,n6,n3:all.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+<script>
+    var i;var num;var count=0;var res = "";var R1; var R2;
+    var Volts;
+if (annyang) {
+  // Let's define our first command. First the text we expect, and then the function it should call
+  var commands = {
+    'hello' : function(){}
       
-        <form id="html-options">
-            <label>Filename: <input class="filename" id="html-filename" placeholder="a rich document" type="text" />.net</label>
-            <input value="Save" type="submit" />
-        </form>
-    </section>
-<script xmlns="http://www.w3.org/1999/xhtml" async="" src="https://cdn.rawgit.com/eligrey/Blob.js/0cef2746414269b16834878a8abc52eb9d53e6bd/Blob.js"></script>
-    <script xmlns="http://www.w3.org/1999/xhtml" async="" src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/f1a01896135ab378aa5c0118eadd81da55e698d8/canvas-toBlob.js"></script>
-    <script xmlns="http://www.w3.org/1999/xhtml" async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js"></script>
-    <script xmlns="http://www.w3.org/1999/xhtml" async="" src="VCircuitSim/script/demo.min.js"></script>
+  }};
+    annyang.addCallback('result', function(userSaid) {
+        for(i = 0;i < 5; i++)
+            { //res = Number.isNaN(userSaid[i]);
+              if(count==0){
+                  R1 = userSaid[i].replace(/^\D+|\D+$/g, "");
+                  //if(res == "false"){
+                     
+                 
+                  console.log(R1)
+                  count=count+1;
+                  var test = document.getElementById("r1").innerHTML = R1;
+                  document.getElementById("r1data").innerHTML = r1data.innerHTML += R1;
+             
+              }
+                if(count>0)
+                {
+                    count = 0;
+                    break;
+                }
+                
+                  
+              
+                
+                 
+            }}); //check here
+   
+
+                
+                  
+              
+                
+                 
+  
+  
+  // Add our commands to annyang
+  annyang.addCommands(commands);
+    annyang.debug();
+  // Start listening. You can call this here, or attach this call to an event, button, etc.
+  annyang.start();
+    
+</script>
+   
+    <title>
+        VCircuitSim
+    </title>
+</head>
+
+<body>
+    <div class="w3-container w3-blue w3-center">
+        <h1>
+            VCircuitSim
+        </h1>
+    </div>
+    <div style="padding-left: 100px;padding-top: 50px;">
+       <p>
+          Enter R1 =
+       </p>
+        
+    </div>
+    <div id=r1>
+        <p>
+            
+        </p>
+    </div>
+    
+<div id="text" style="padding-top: 100px; padding-bottom: 50px;padding-left: 400px;"> 
+ <pre>Netlist File
+<h7 id=r1data>R1 1 2 </h7><h7>k</h7>		
+C1 1 3 10Uf
+V1 2 0 PWL(0.01 1 0.02 2 0.03 3 0.04 4) rser=0.1
+Vout 2 0 1
+in 2 3 4
+.op
+.end
+</pre>
+    
+    </div>
+<div style="text-align: center">
+    
+    <button onclick="download()" style="text-align: center">Save Text to File</button>
+    
+</div>
+     
+        
+        
+  
+    <script src="FileSaver.js">
+ 
+function saveTextAsFile()
+{
+    var data = document.getElementById("text").innerHTML;
+    var textToSave = $(data).text();
+    var blob = new Blob("[textToSave]", {type:"text/plain;charset=utf-8"});
+    saveAs(blob, "Netlist.net");
+}
+        
+
+</script>
+<script src="FileSaver.js"></script>
+<script>
+  function download(){
+
+    //alert("hello world");
+    //this alert line was to test the function call
+    //the alert actually appears when the <script> tag
+    // has no src field labeled. Just an observation.
+      var data = document.getElementById("text").innerHTML;
+      var textToSave = $(data).text();
+    var blob = new Blob([textToSave],{type:"text/plain;charset=utf-8"});
+    saveAs(blob,"Netlist.net");
+   }
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </body>
-  </html>
+</html>
