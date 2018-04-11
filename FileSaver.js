@@ -1,9 +1,9 @@
 /* FileSaver.js
  * A saveAs() FileSaver implementation.
- * 1.3.5
- * 2018-01-22 15:49:54
+ * 1.3.2
+ * 2016-06-16 18:25:19
  *
- * By Eli Grey, https://eligrey.com
+ * By Eli Grey, http://eligrey.com
  * License: MIT
  *   See https://github.com/eligrey/FileSaver.js/blob/master/LICENSE.md
  */
@@ -11,9 +11,9 @@
 /*global self */
 /*jslint bitwise: true, indent: 4, laxbreak: true, laxcomma: true, smarttabs: true, plusplus: true */
 
-/*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/src/FileSaver.js */
+/*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js */
 
-export default var saveAs = saveAs || (function(view) {
+var saveAs = saveAs || (function(view) {
 	"use strict";
 	// IE <10 is explicitly unsupported
 	if (typeof view === "undefined" || typeof navigator !== "undefined" && /MSIE [1-9]\./.test(navigator.userAgent)) {
@@ -173,5 +173,16 @@ export default var saveAs = saveAs || (function(view) {
 }(
 	   typeof self !== "undefined" && self
 	|| typeof window !== "undefined" && window
-	|| this
+	|| this.content
 ));
+// `self` is undefined in Firefox for Android content script context
+// while `this` is nsIContentFrameMessageManager
+// with an attribute `content` that corresponds to the window
+
+if (typeof module !== "undefined" && module.exports) {
+  module.exports.saveAs = saveAs;
+} else if ((typeof define !== "undefined" && define !== null) && (define.amd !== null)) {
+  define("FileSaver.js", function() {
+    return saveAs;
+  });
+}
